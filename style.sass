@@ -1,5 +1,66 @@
 *
     font-family: 'Inter', sans-serif
+
+body
+    background: #F5F5F5
+
+header
+    padding-top: 64px
+    padding-bottom: 40px
+
+.container
+    max-width: 768px
+    width: 100%
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 0 40px 0 40px
     
-h1
-    color: green
+.title
+    font-weight: 700
+    font-size: 64px
+    line-height: 77px
+    &__subtitle
+        font-weight: 400
+        font-size: 21px
+        line-height: 36px
+        margin-bottom: 48px
+
+form
+    display: flex
+    justify-content: space-between
+    .input__wrapper
+        display: flex
+        flex-direction: column
+        max-width: 216px
+        width: 100%
+    .name__wrapper
+        max-width: 452px
+        width: 100%
+        margin-right: 20px
+    .schoole__wrapper
+        max-width: 216px
+        width: 100%
+    label
+        font-weight: 400
+        font-size: 16px
+        line-height: 28px
+        color: #818182
+    input, select
+        padding: 8px 17.22px
+        font-weight: 400
+        font-size: 16px
+        line-height: 21px
+        color: #ABB5BE
+        border: 1px solid #CED4DA
+        border-radius: 4px
+        height: 38px
+        
+    #name::placeholder
+        color: #ABB5BE
+
+hr
+    height: 1px
+    background: #D4D3D8
+    border: none

@@ -7,13 +7,40 @@
     <link type="image/x-icon" href="./favicon.png" rel="shortcut icon">
     <title>Hogwarts</title>
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Hogwarts</h1>
-    <p>View all students from Hogwarts university</p>
-    <script src=""></script>
+    <header>
+        <div class="container">
+            <h1 class="title">Hogwarts</h1>
+            <p class="title__subtitle">View all students from Hogwarts university</p>
+            <form action="">
+                <div class="input__wrapper name__wrapper">
+                    <label for="name">Name</label>
+                    <input type="text" placeholder="Hermione" id="name" name="name">
+                </div>
+                <div class="input__wrapper school__wrapper">
+                    <label for="school">School</label>
+                    <select placeholder="Choose one" id="school" name="school">
+                        <option value="" selected disabled hidden>Choose here</option>
+                        <option value="gryffindor">Gryffindor</option>
+                        <option value="hufflepuff">Hufflepuff</option>
+                        <option value="ravenclaw">Ravenclaw</option>
+                        <option value="slytherin">Slytherin</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </header>
+    <hr>
+    <main>
+        <div class="container">
+
+        </div>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
