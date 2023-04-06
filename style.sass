@@ -58,6 +58,11 @@ form
         border: 1px solid #CED4DA
         border-radius: 4px
         height: 38px
+    select
+        appearance: none
+        background-image: url(../arrow.svg)
+        background-repeat: no-repeat
+        background-position: right 1rem center
 
 section
     padding-top: 40px
@@ -106,8 +111,10 @@ hr
         .name__wrapper
             margin-right: 0
             margin-bottom: 15px
+            max-width: unset
         .school__wrapper
             max-width: unset
     section
         .container
             grid-template-columns: repeat(1, 1fr)
+            justify-items: center
