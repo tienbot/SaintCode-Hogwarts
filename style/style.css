@@ -116,6 +116,11 @@ section .card .name {
   font-size: 20px;
   line-height: 24px;
 }
+section .card .actor {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 hr {
   height: 1px;

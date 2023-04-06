@@ -1,21 +1,35 @@
 //получить данные из БД
 import {data as people} from './data.js'
-
+//рендер карточки
 renderCard(people)
-
+//присваиваем переменные
 const card = Object.values(document.querySelectorAll('.card'))
-// const cardText = Object.values(document.querySelectorAll('.card__text'))
 const h1 = document.querySelector('h1')
 const inputName = document.querySelector('#name')
 const inputSchool = document.querySelector('#school')
-
 const form = document.querySelector('form')
+
+//убрать дефолтное поведение формы (убрать обновление страницы)
 form.addEventListener("submit", (e)=>{
     e.preventDefault()
 })
 
 //input имени, настройка
 inputName.addEventListener('change', (event) => {
+    filter(event)
+})
+//input школы, настройка
+inputSchool.addEventListener('change', (event) => {
+    filter(event)
+})
+
+//при нажатии на заголовок, все карточки появляются
+h1.addEventListener('click', () => {
+    hideCard(card, false)
+})
+
+//фильтрация данных по инпутам 
+function filter(event){
     hideCard(card, true)
     let inputText = event.target.value.toLowerCase()
     card.map((el) => {
@@ -26,24 +40,7 @@ inputName.addEventListener('change', (event) => {
             el.style.display="block"
         }
     })
-})
-//input школы, настройка
-inputSchool.addEventListener('change', (event) => {
-    hideCard(card, true)
-    let inputText = event.target.value.toLowerCase()
-    card.map((el) => {
-        let titleName = el.children[1].children[0].innerText.toLowerCase()
-        let titleSchool = el.children[1].children[3].innerText.toLowerCase()
-        let nameValue = inputName.value.toLowerCase()
-        if (titleSchool.includes(inputText) && titleName.includes(nameValue)){ 
-            el.style.display="block"
-        }
-    })
-})
-
-h1.addEventListener('click', () => {
-    hideCard(card, false)
-})
+}
 
 //передать данные из БД в карточки
 function renderCard(data){
@@ -70,7 +67,7 @@ function createCard(obj) {
     //добавляем информацию в текстовый блок
     card_text.innerHTML = `
         <p class="name">${obj.name}</p>
-        <p>Actor: ${obj.actor}</p>
+        <p class="actor">Actor: ${obj.actor}</p>
         <p>Gender: ${obj.gender}</p>
         <p>House: ${obj.house}</p>
         <p>Wand core: ${obj.wand.core}</p>
