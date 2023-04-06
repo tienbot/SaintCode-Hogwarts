@@ -2,12 +2,17 @@
 import {data as people} from './data.js'
 //рендер карточки
 renderCard(people)
+
 //присваиваем переменные
 const card = Object.values(document.querySelectorAll('.card'))
 const h1 = document.querySelector('h1')
 const inputName = document.querySelector('#name')
 const inputSchool = document.querySelector('#school')
 const form = document.querySelector('form')
+const like = document.querySelectorAll('.favorite')
+
+//кнопка лакйка ждет нажатия
+getLike(like)
 
 //убрать дефолтное поведение формы (убрать обновление страницы)
 form.addEventListener("submit", (e)=>{
@@ -57,6 +62,9 @@ function createCard(obj) {
     //создаем карточку
     const card = document.createElement('div')
     card.className = "card"
+    //создаем кнопку лайка
+    const like = document.createElement('button')
+    like.className = "favorite";
     //создаем картинку
     const img = document.createElement('img')
     img.setAttribute("src", obj.image)
@@ -76,12 +84,21 @@ function createCard(obj) {
         <p>Alive: ${obj.alive}</p>`
 
     container.append(card) //выводим карточку
-    card.append(img, card_text) //выводим картинку и текстовый блок
+    card.append(img, like, card_text) //выводим картинку и текстовый блок
 }
 
 //спрятать карточки на странице
 function hideCard(card, isShow) {
     card.map((el) => {
         el.style = isShow ? 'display: none;' : 'display: block;'
+    })
+}
+
+//поставить лайк
+function getLike(element) {
+    element.forEach(el => {
+        el.addEventListener('click', ()=>{
+            el.classList.toggle('like')
+        })
     })
 }
