@@ -5,6 +5,7 @@ renderCard(people)
 
 const card = Object.values(document.querySelectorAll('.card'))
 // const cardText = Object.values(document.querySelectorAll('.card__text'))
+const h1 = document.querySelector('h1')
 const inputName = document.querySelector('#name')
 
 // const form = document.querySelector('form')
@@ -25,6 +26,10 @@ inputName.addEventListener('change', (event) => {
         }
     })
     event.target.value = ''
+})
+
+h1.addEventListener('click', () => {
+    hideCard(card, false)
 })
 
 //передать данные из БД в карточки

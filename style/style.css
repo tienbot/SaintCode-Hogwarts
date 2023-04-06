@@ -25,6 +25,10 @@ header {
   font-weight: 700;
   font-size: 64px;
   line-height: 77px;
+  width: fit-content;
+}
+.title:hover {
+  cursor: pointer;
 }
 .title__subtitle {
   font-weight: 400;
