@@ -37,35 +37,35 @@ header {
   margin-bottom: 48px;
 }
 
-.form {
+form {
   display: flex;
   justify-content: space-between;
 }
-.form .input__wrapper {
+form .input__wrapper {
   display: flex;
   flex-direction: column;
   max-width: 216px;
   width: 100%;
 }
-.form .name__wrapper {
+form .name__wrapper {
   max-width: 452px;
   width: 100%;
   margin-right: 20px;
 }
-.form .name__wrapper #name::placeholder {
+form .name__wrapper #name::placeholder {
   color: #ABB5BE;
 }
-.form .schoole__wrapper {
+form .schoole__wrapper {
   max-width: 216px;
   width: 100%;
 }
-.form label {
+form label {
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
   color: #818182;
 }
-.form input, .form select {
+form input, form select {
   padding: 8px 17.22px;
   font-weight: 400;
   font-size: 16px;
@@ -75,7 +75,7 @@ header {
   border-radius: 4px;
   height: 38px;
 }
-.form select {
+form select {
   appearance: none;
   background-image: url(../arrow.svg);
   background-repeat: no-repeat;
@@ -133,15 +133,15 @@ hr {
     line-height: 28px;
     margin-bottom: 28px;
   }
-  .form {
+  form {
     flex-wrap: wrap;
   }
-  .form .name__wrapper {
+  form .name__wrapper {
     margin-right: 0;
     margin-bottom: 15px;
     max-width: unset;
   }
-  .form .school__wrapper {
+  form .school__wrapper {
     max-width: unset;
   }
   section .container {

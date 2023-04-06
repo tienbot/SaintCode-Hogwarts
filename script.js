@@ -7,20 +7,31 @@ const card = Object.values(document.querySelectorAll('.card'))
 // const cardText = Object.values(document.querySelectorAll('.card__text'))
 const h1 = document.querySelector('h1')
 const inputName = document.querySelector('#name')
+const inputSchool = document.querySelector('#school')
 
-// const form = document.querySelector('form')
-// form.addEventListener("click", (e)=>{
-//     e.preventDefault()
-
-// })
+const form = document.querySelector('form')
+form.addEventListener("submit", (e)=>{
+    e.preventDefault()
+})
 
 //input имени, настройка
 inputName.addEventListener('change', (event) => {
-    event.preventDefault()
     hideCard(card, true)
     let inputText = event.target.value.toLowerCase()
     card.map((el) => {
         let title = el.children[1].children[0].innerText.toLowerCase()
+        if (title.includes(inputText)){ 
+            el.style.display="block"
+        }
+    })
+    event.target.value = ''
+})
+//input школы, настройка
+inputSchool.addEventListener('change', (event) => {
+    hideCard(card, true)
+    let inputText = event.target.value.toLowerCase()
+    card.map((el) => {
+        let title = el.children[1].children[3].innerText.toLowerCase()
         if (title.includes(inputText)){ 
             el.style.display="block"
         }
@@ -50,33 +61,21 @@ function createCard(obj) {
     img.setAttribute("src", obj.image)
     //создаем текстовый блок
     let card_text = document.createElement('div')
-    card_text.className = "card__text"
-
-    // card_text.innerHtml = `
-    //     <p class="name">${obj.name}</p>
-    //     <p>Actor: ${obj.actor}</p>
-    //     <p>Gender: ${obj.gender}</p>
-    //     <p>House: ${obj.house}</p>
-    //     <p>Wand core: ${obj.wand.core}</p>
-    //     <p>Alive: yes</p>`
-
-    const name = document.createElement('p')
-    name.className = "name"
-    name.innerText = obj.name
-    const actor = document.createElement('p')
-    actor.innerText = `Actor: ${obj.actor}`
-    const gender = document.createElement('p')
-    gender.innerText = `Gender: ${obj.gender}`
-    const house = document.createElement('p')
-    house.innerText = `House: ${obj.house}`
-    const wand = document.createElement('p')
-    wand.innerText = `Wand core: ${obj.wand.core}`
-    const alive = document.createElement('p')
-    obj.alive ? alive.innerText = `Alive: yes` : alive.innerText = `Alive: no`
+    card_text.className = "card__text";
+    
+    obj.alive ? obj.alive = `yes` : obj.alive = `no`
+    
+    //добавляем информацию в текстовый блок
+    card_text.innerHTML = `
+        <p class="name">${obj.name}</p>
+        <p>Actor: ${obj.actor}</p>
+        <p>Gender: ${obj.gender}</p>
+        <p>House: ${obj.house}</p>
+        <p>Wand core: ${obj.wand.core}</p>
+        <p>Alive: ${obj.alive}</p>`
 
     container.append(card) //выводим карточку
     card.append(img, card_text) //выводим картинку и текстовый блок
-    card_text.append(name, actor, gender, house, wand, alive) //выводим содержимое текстового блока
 }
 
 //спрятать карточки на странице
