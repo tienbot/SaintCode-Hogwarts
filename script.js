@@ -10,6 +10,7 @@ const inputName = document.querySelector('#name')
 const inputSchool = document.querySelector('#school')
 const form = document.querySelector('form')
 const like = document.querySelectorAll('.favorite')
+let likedPerson = []
 
 //кнопка лакйка ждет нажатия
 getLike(like)
@@ -99,6 +100,12 @@ function getLike(element) {
     element.forEach(el => {
         el.addEventListener('click', ()=>{
             el.classList.toggle('like')
+            if(el.classList.contains('like')) {
+                likedPerson.push(el.parentElement.children[2].children[0].innerHTML)
+            } else {
+                likedPerson.pop(el.parentElement.children[2].children[0].innerHTML)
+            }
+            console.log(likedPerson)
         })
     })
 }
