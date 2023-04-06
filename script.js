@@ -19,24 +19,26 @@ inputName.addEventListener('change', (event) => {
     hideCard(card, true)
     let inputText = event.target.value.toLowerCase()
     card.map((el) => {
-        let title = el.children[1].children[0].innerText.toLowerCase()
-        if (title.includes(inputText)){ 
+        let titleName = el.children[1].children[0].innerText.toLowerCase()
+        let titleSchool = el.children[1].children[3].innerText.toLowerCase()
+        let schoolValue = inputSchool.value.toLowerCase()
+        if (titleName.includes(inputText) && titleSchool.includes(schoolValue)){ 
             el.style.display="block"
         }
     })
-    event.target.value = ''
 })
 //input школы, настройка
 inputSchool.addEventListener('change', (event) => {
     hideCard(card, true)
     let inputText = event.target.value.toLowerCase()
     card.map((el) => {
-        let title = el.children[1].children[3].innerText.toLowerCase()
-        if (title.includes(inputText)){ 
+        let titleName = el.children[1].children[0].innerText.toLowerCase()
+        let titleSchool = el.children[1].children[3].innerText.toLowerCase()
+        let nameValue = inputName.value.toLowerCase()
+        if (titleSchool.includes(inputText) &&  titleName.includes(nameValue)){ 
             el.style.display="block"
         }
     })
-    event.target.value = ''
 })
 
 h1.addEventListener('click', () => {
