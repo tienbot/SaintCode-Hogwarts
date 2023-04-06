@@ -26,17 +26,19 @@ inputSchool.addEventListener('change', (event) => {
 //при нажатии на заголовок, все карточки появляются
 h1.addEventListener('click', () => {
     hideCard(card, false)
+    inputName.value = ''
+    inputSchool.value = ''
 })
 
 //фильтрация данных по инпутам 
 function filter(event){
     hideCard(card, true)
-    let inputText = event.target.value.toLowerCase()
+    let schoolValue = inputSchool.value.toLowerCase()
+    let nameValue = inputName.value.toLowerCase()
     card.map((el) => {
         let titleName = el.children[1].children[0].innerText.toLowerCase()
         let titleSchool = el.children[1].children[3].innerText.toLowerCase()
-        let schoolValue = inputSchool.value.toLowerCase()
-        if (titleName.includes(inputText) && titleSchool.includes(schoolValue)){ 
+        if (titleName.includes(nameValue) && titleSchool.includes(schoolValue)){ 
             el.style.display="block"
         }
     })
