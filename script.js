@@ -35,7 +35,7 @@ inputSchool.addEventListener('change', (event) => {
         let titleName = el.children[1].children[0].innerText.toLowerCase()
         let titleSchool = el.children[1].children[3].innerText.toLowerCase()
         let nameValue = inputName.value.toLowerCase()
-        if (titleSchool.includes(inputText) &&  titleName.includes(nameValue)){ 
+        if (titleSchool.includes(inputText) && titleName.includes(nameValue)){ 
             el.style.display="block"
         }
     })

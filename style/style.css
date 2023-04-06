@@ -101,8 +101,9 @@ section .card {
 }
 section .card img {
   width: 100%;
-  height: 192px;
-  object-fit: fill;
+  height: 334px;
+  object-fit: cover;
+  object-position: top;
 }
 section .card__text {
   padding: 24px;
