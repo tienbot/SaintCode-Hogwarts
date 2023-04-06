@@ -1,13 +1,40 @@
+//получить данные из БД
 import {data as people} from './data.js'
 
 renderCard(people)
 
+const card = Object.values(document.querySelectorAll('.card'))
+// const cardText = Object.values(document.querySelectorAll('.card__text'))
+const inputName = document.querySelector('#name')
+
+// const form = document.querySelector('form')
+// form.addEventListener("click", (e)=>{
+//     e.preventDefault()
+
+// })
+
+//input имени, настройка
+inputName.addEventListener('change', (event) => {
+    event.preventDefault()
+    hideCard(card, true)
+    let inputText = event.target.value.toLowerCase()
+    card.map((el) => {
+        let title = el.children[1].children[0].innerText.toLowerCase()
+        if (title.includes(inputText)){ 
+            el.style.display="block"
+        }
+    })
+    event.target.value = ''
+})
+
+//передать данные из БД в карточки
 function renderCard(data){
     data.forEach(el => {
         createCard(el)
     })
 }
 
+//отобразить карточки на странице
 function createCard(obj) {
     const container = document.body.querySelector("section").querySelector(".container")
     //создаем карточку
@@ -45,4 +72,11 @@ function createCard(obj) {
     container.append(card) //выводим карточку
     card.append(img, card_text) //выводим картинку и текстовый блок
     card_text.append(name, actor, gender, house, wand, alive) //выводим содержимое текстового блока
+}
+
+//спрятать карточки на странице
+function hideCard(card, isShow) {
+    card.map((el) => {
+        el.style = isShow ? 'display: none;' : 'display: block;'
+    })
 }
