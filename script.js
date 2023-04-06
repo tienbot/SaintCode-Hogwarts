@@ -1,5 +1,12 @@
 //получить данные из БД
 import {data as people} from './data.js'
+// JSON.parse(localStorage.getItem('key'))
+
+//получаем данные из localStorage
+let likedPersons = '';
+//если данных нет - переменная пустая
+(window.localStorage.getItem('names') == null) ? likedPersons = '' : likedPersons = window.localStorage.getItem('names')
+
 //рендер карточки
 renderCard(people)
 
@@ -10,7 +17,7 @@ const inputName = document.querySelector('#name')
 const inputSchool = document.querySelector('#school')
 const form = document.querySelector('form')
 const like = document.querySelectorAll('.favorite')
-let likedPerson = []
+let likedPerson = likedPersons.split(',')
 
 //кнопка лакйка ждет нажатия
 getLike(like)
@@ -42,8 +49,8 @@ function filter(event){
     let schoolValue = inputSchool.value.toLowerCase()
     let nameValue = inputName.value.toLowerCase()
     card.map((el) => {
-        let titleName = el.children[1].children[0].innerText.toLowerCase()
-        let titleSchool = el.children[1].children[3].innerText.toLowerCase()
+        let titleName = el.children[2].children[0].innerText.toLowerCase()
+        let titleSchool = el.children[2].children[3].innerText.toLowerCase()
         if (titleName.includes(nameValue) && titleSchool.includes(schoolValue)){ 
             el.style.display="block"
         }
@@ -65,14 +72,19 @@ function createCard(obj) {
     card.className = "card"
     //создаем кнопку лайка
     const like = document.createElement('button')
-    like.className = "favorite";
+    like.className = "favorite"
+    //если данные есть в localStorage - отобразить лайк на карточке
+    if(likedPersons.includes(obj.name)){
+        like.classList.add('like')
+    }
+
     //создаем картинку
     const img = document.createElement('img')
     img.setAttribute("src", obj.image)
     //создаем текстовый блок
     let card_text = document.createElement('div')
     card_text.className = "card__text";
-    
+    //меняем вывод на 'yes' или 'no'
     obj.alive ? obj.alive = `yes` : obj.alive = `no`
     
     //добавляем информацию в текстовый блок
@@ -85,7 +97,7 @@ function createCard(obj) {
         <p>Alive: ${obj.alive}</p>`
 
     container.append(card) //выводим карточку
-    card.append(img, like, card_text) //выводим картинку и текстовый блок
+    card.append(img, like, card_text) //выводим картинку, кнопку лайка и текстовый блок
 }
 
 //спрятать карточки на странице
@@ -95,17 +107,18 @@ function hideCard(card, isShow) {
     })
 }
 
-//поставить лайк
+//поставить/убрать лайк
 function getLike(element) {
     element.forEach(el => {
         el.addEventListener('click', ()=>{
             el.classList.toggle('like')
+            let namePerson = el.parentElement.children[2].children[0].innerHTML
             if(el.classList.contains('like')) {
-                likedPerson.push(el.parentElement.children[2].children[0].innerHTML)
+                likedPerson.push(namePerson)
             } else {
-                likedPerson.pop(el.parentElement.children[2].children[0].innerHTML)
+                likedPerson = likedPerson.filter(word => word !== namePerson)
             }
-            console.log(likedPerson)
+            window.localStorage.setItem('names', likedPerson)
         })
     })
 }

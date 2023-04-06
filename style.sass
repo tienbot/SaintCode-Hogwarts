@@ -30,10 +30,12 @@ header
         line-height: 36px
         margin-bottom: 48px
         &__liked
-            margin-bottom: 32px    
+            margin-bottom: 32px 
     &__liked
         font-size: 52px
         line-height: 63px
+        &:hover
+            cursor: auto
 .back
     width: fit-content
     font-size: 16px
@@ -84,7 +86,7 @@ section
         position: relative
         display: grid
         grid-template-rows: repeat(2, 1fr)
-        grid-template-columns: repeat(2, 50%)
+        grid-template-columns: repeat(2, 48%)
         gap: 20px
         .likedPageBtn
             position: fixed
@@ -147,6 +149,9 @@ section
             background-position: center center
             &:hover
                 cursor: pointer
+            &__liked
+                &:hover
+                    cursor: auto
         .like
             background-image: url("../icons/heart.svg") !important
 

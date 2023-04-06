@@ -43,6 +43,9 @@ header {
   font-size: 52px;
   line-height: 63px;
 }
+.title__liked:hover {
+  cursor: auto;
+}
 
 .back {
   width: fit-content;
@@ -104,7 +107,7 @@ section .container {
   position: relative;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(2, 50%);
+  grid-template-columns: repeat(2, 48%);
   gap: 20px;
 }
 section .container .likedPageBtn {
@@ -176,6 +179,9 @@ section .card .favorite {
 }
 section .card .favorite:hover {
   cursor: pointer;
+}
+section .card .favorite__liked:hover {
+  cursor: auto;
 }
 section .card .like {
   background-image: url("../icons/heart.svg") !important;
