@@ -23,8 +23,8 @@ function createCard(obj) {
     const card = document.createElement('div')
     card.className = "card"
     //создаем кнопку лайка
-    const like = document.createElement('button')
-    like.className = "favorite favorite__liked like";
+    // const like = document.createElement('button')
+    // like.className = "favorite favorite__liked like";
     //создаем картинку
     const img = document.createElement('img')
     img.setAttribute("src", obj.image)
@@ -44,5 +44,6 @@ function createCard(obj) {
         <p>Alive: ${obj.alive}</p>`
 
     container.append(card) //выводим карточку
-    card.append(img, like, card_text) //выводим картинку и текстовый блок
+    card.append(img, card_text) //выводим картинку и текстовый блок
+    // card.append(like) //выводим кнопку лайка
 }
